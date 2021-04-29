@@ -1,0 +1,314 @@
+.cadre {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 110px;
+}
+.conteneur{
+    position: absolute;
+    right: 30px;
+    top: -20px;
+
+}
+
+.article{
+    height: 400px;
+    width: 200px;
+    margin-right: 20px;
+    margin-top: 20px;
+    background:  rgba(44, 43, 43, 0.712);
+    border-radius: 2px;
+    text-align: center;
+    justify-content: center;
+    box-shadow: 5px 2px 2px grey;
+}
+.article p{
+    padding-top: 10px;
+    font-family: 'Nunito';
+    color: rgb(14, 146, 223);
+    font-size: 18px;
+    letter-spacing: 2px;
+}
+.article p a{
+    color:rgb(14, 146, 223);
+    padding-bottom: 5px;
+    border-bottom: 2px  solid black;
+}
+
+/*----------------------------------------------
+pour l'affichage dans la partie du sidebar
+------------------------------------------------*/
+.container1{
+    font-family: 'Poppins', sans-serif;
+    width: 100px;
+    height: 120px;
+    margin: 15px;
+    justify-content: center;
+    align-items: center;
+    margin-left: 25%;
+}
+.container1 .card1{
+    position: relative;
+    width: 100px;
+    height: 120px;
+    background: #232323;
+    border-radius: 2px;
+    overflow: hidden;
+    color: #000000;
+    font-size: 16px;
+}
+.container1 .card1:before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:rgb(14, 146, 223);
+    clip-path: circle(50px at 80% 20%);
+    transition: 0.5s ease-in-out;
+}
+.container1 .card1:hover:before{
+    clip-path: circle(100px at 80% -20%);
+}
+.container1 .card1:after{
+    content: 'Frip chic';
+    justify-content: center;
+    align-content: center;
+    position: absolute;
+    top: 25%;
+    font-size: 2em;
+    font-weight: 600;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.06);
+}
+.container1 .card1 .image1{
+    position: absolute;
+    top: 50%;
+    justify-content: center;
+    transform: translateY(-50%);
+    z-index: 100;
+    transition: 0.5s;
+    width: 100%;
+}
+.container1 .card1:hover .image1{
+    position: absolute;
+    top: 0%;
+    transform: translateY(0%);
+}
+.container1 .card1 .image1 img{
+    width: 60%;
+    border-radius: 8px;
+}
+.container1 .card1:hover .image1 img{
+    max-width: 50%;
+    transition: 0.5s ease-in-out;
+}
+.container1 .card1:hover .contenu1{
+    height: 60px;
+
+}
+.contenu1{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: 1s;
+    z-index: 10;
+    font-size: 16px;
+}
+.container1 .card1 .contenu1 .taille1{
+    visibility: hidden;
+}
+.container1 .card1 .contenu1 .couleur1{
+    visibility: hidden;
+}
+.container1 .card1:hover .contenu1 .taille1{
+    visibility: visible;
+    transition: 0.5s ease-in-out;
+}
+.container1 .card1:hover .contenu1 .couleur1{
+    visibility: visible;
+    transition: 0.5s ease-in-out;
+}
+.contenu1 h2{
+    position: relative;
+    color: #ffffff;
+    font-weight: 600;
+    letter-spacing: 1px;
+    font-size: 10px;
+}
+.contenu1 h3{
+    color: #ffffff;
+    font-weight: 300;
+    letter-spacing: 1px;
+    margin-right: 5px;
+    text-transform: uppercase;
+    font-size: 8px;
+}
+.contenu1  .taille1 span{
+    margin-right: 4px;
+    text-align: center;
+    display: inline-block;
+    width: 12px;
+    background: rgb(14, 146, 223);
+    border-radius: 4px;
+    font-size: 10px;
+}
+.contenu1  .taille1 span:hover{
+    cursor: pointer;
+    background: #ffffff;
+}
+.contenu1  .couleur1 span{
+    margin-right: 4px;
+    text-align: center;
+    display: inline-block;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 5px;
+    height: 5px;
+    font-size: 14px;
+}
+.contenu1  .couleur1 span:nth-child(2){
+    background:gold;
+}
+.contenu1  .couleur1 span:nth-child(3){
+    background: rgb(14, 146, 223);
+}
+.contenu1  .couleur1 span:nth-child(4){
+    background: red;
+}
+.contenu1  .couleur1 span:nth-child(5){
+    background: green;
+}
+
+.contenu1 .taille1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.contenu1 .couleur1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5px;
+}
+.contenu1 .couleur1, .taille1, h2, h3{
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+/* ------------------------------------------------- */
+/* slider */
+
+#slider{
+    margin-left: 5%;
+    width: 50%;
+    height: 400px;
+    position: relative;
+    background-color: #CCC;
+    border-radius: 2px;
+    box-shadow: 5px 2px 2px rgba(104, 110, 110, 0.342);
+}
+#image{
+    width: 100%;
+    height: 400px;
+    position: absolute;
+    transition: ease-in-out 1s;
+    border-radius: 6px;
+}
+#slider .affiche{
+    justify-content: center;
+    align-content: flex-end;
+    position: absolute;
+    top: 65%;
+    left: 15%;
+}
+#slider h1{
+    display: block;
+    width: fit-content;
+    font-size: 20px;
+    font-family: 'Forte';
+    position: relative;
+    color: transparent;
+    animation: text_reveal 0.5s ease forwards;
+    animation-delay: 2s;
+}
+#slider h1:nth-child(1){
+    animation-delay: 2s;
+}
+#slider h1:nth-child(2){
+    animation-delay: 3s;
+}
+#slider h1:nth-child(3){
+    animation-delay: 4s;
+}
+#slider h1 span{
+position: absolute;
+top: 0;
+left: 0;
+height: 100%;
+width: 0;
+border-radius: 3px;
+background-color: rgb(14, 146, 223);
+animation: text_reveal_box 1s ease;
+animation-delay: 1.5s;
+}
+#slider h1:nth-child(1) span{
+    animation-delay: 1.5s;
+}
+#slider h1:nth-child(2) span{
+    animation-delay: 2.5s;
+}
+#slider h1:nth-child(3) span{
+    animation-delay: 3.5s;
+}
+@keyframes text_reveal_box{
+    50%{
+        width: 100%;
+        left: 0;
+    }
+    100%{
+        width: 0;
+        left: 100%;
+    }
+}
+@keyframes text_reveal{
+    100%{
+        color: rgb(0, 0, 0);
+    }
+}
+#BD{
+    position: absolute;
+    right: 8px;
+    top: 195px;
+    bottom: 200px;
+    height: 15px;
+    width: 20px;
+}
+#BG{
+    position: absolute;
+    left: 8px;
+    top: 195px;
+    bottom: 200px;
+    height: 15px;
+    width: 20px;
+}
+.right{
+    height: 15px;
+    width: 20px;
+    opacity: 0.4;
+}
+.left{
+    height: 15px;
+    width: 20px;
+    opacity: 0.4;
+}
+.right:hover, .left:hover{
+    background-color: rgba(104, 110, 110, 0.342);
+    border-radius: 50%;
+    transition: ease-in-out 1s;
+    opacity: 1;
+}

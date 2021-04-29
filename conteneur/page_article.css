@@ -1,0 +1,139 @@
+.page{
+    position: relative;
+    margin: 0;
+    justify-content: space-between;
+}
+.articles{
+    position: relative;
+    margin-top: 100px;
+    max-height: fit-content;
+    display: grid;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    grid-template-columns: 45% 15% 35%;
+    margin-bottom: 5vh;
+}
+.details{
+    margin-inline: 5vw;
+    padding: 10px;
+    padding-inline: 2vw;
+    margin-top: 5vh;
+    height: fit-content;
+    border-radius: 4px;
+    background: linear-gradient(to bottom,  rgba(14, 146, 223, 0.105),  rgba(4, 75, 116, 0.105));
+    color: black;
+}
+.details h2{
+    font-family: 'Forte';
+    font-size: 18px;
+    justify-content: center;
+    text-align: center;
+    text-justify: distribute;
+    text-shadow: rgb(14, 146, 223);
+    color: black;
+    margin-bottom:15px ;
+    border-bottom: solid 2px rgb(14, 146, 223);
+    width: fit-content;
+}
+.articles .contenu1{
+    position: relative;
+    max-width: 100%;
+    max-height: 60vh;
+    overflow: hidden;
+
+}
+.articles .contenu2{
+    position: relative;
+    border: 2px solid rgb(14, 146, 223);
+    margin-right: 3vw;
+}
+.articles .contenu3{
+    position: relative;
+    padding-inline: 5%;
+}
+.articles .contenu1  img{
+    position: relative;
+    max-width: 80%;
+    max-height: 90%;
+    transition: 1s ease-in-out;
+    margin-right: 5vw;
+}
+.articles .contenu1:hover img{
+    transform: scale(1.5);
+    margin-right: 5vw;
+}
+.articles .contenu3 .titre{
+    margin-top: 15px;
+    font-family: 'Forte';
+    font-size: 25px;
+    color: rgb(14, 146, 223);
+}
+.articles .contenu3 .stock{
+    display: grid;
+    grid-template-columns: 70% 30%;
+}
+.articles .contenu3 .stock .prix{
+    font-family: 'Nunito';
+    font-size: 18px;
+    color: black;
+    margin-right: 40px;
+}
+.articles .contenu3 .stock .stockage{
+    font-family: 'Nunito';
+    font-size: 18px;
+    color:rgb(14, 146, 223);
+}
+.articles .contenu3 .stock .stockage a{
+    font-family: 'Nunito';
+    font-size: 19px;
+    color:rgb(14, 13, 13);
+}
+.articles .contenu3 .description, .pourpanier{
+    font-family: 'Nunito';
+    font-size: 18px;
+    color: black;
+}
+.articles .contenu3 .pourpanier{
+    border-radius: 10px;
+    padding: 4px 6px;
+    width: fit-content;
+    background-color: rgba(14, 146, 223, 0.555);;
+
+}
+.articles .contenu3 .pourpanier a{
+    color: black;
+    font-family: 'Forte';
+    font-size: 16px;
+}
+.articles .contenu3 .pourpanier:hover a{
+    text-decoration: none;
+    color: gray;
+    transition: ease-in-out 1s;
+}
+.articles .contenu3 .categorie{
+margin-top: 15px;
+}
+a{
+    text-decoration: none;
+}
+.facade{
+    position: relative;
+    display: grid;
+    grid-template-columns: 40% 20% 40%;
+    margin-inline: 10%;
+    margin-block: 8vh;
+}
+.facade .trait{
+    position: relative;
+    border-bottom: 3px solid rgb(14, 146, 223);
+    height: 0;
+    margin-block: 4vh;
+}
+.facade .middle{
+    position: relative;
+    text-align: center;
+    font-family: 'Nunito';
+    font-style: italic;
+    font-weight: bold;
+    font-size: 18px;
+}

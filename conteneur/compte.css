@@ -1,0 +1,23 @@
+.informations{
+    width: 80%;
+    margin: 10vh 3vh 10% 10%;
+}
+.info{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 2vw;
+    color: rgb(27, 140, 206);;
+    border-bottom: 2px solid rgb(27, 140, 206);;
+}
+p{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 3vh 0;
+    font-size: 1.3vw;
+}
+span{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.5vw;
+    color: rgb(27, 140, 206);;
+}
+h1{
+    margin-top: 10vh;
+}
