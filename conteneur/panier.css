@@ -1,0 +1,10 @@
+.page_panier{
+    margin-top: 10vh;
+}
+.page_panier .titre{
+    margin-left: 5vw;
+}
+.page_panier .titre h1{
+    color: rgb(27, 140, 206);
+    font-family: 'Forte';
+}

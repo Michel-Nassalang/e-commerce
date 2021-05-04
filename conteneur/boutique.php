@@ -19,70 +19,36 @@ session_start();
     }
 ?>
 <?php
+// ----------------------------------------------------------------
 if(isset($_GET['show'])){
-    $produit = htmlspecialchars($_GET['show']);
-
-    $select = $db ->prepare("SELECT * FROM produits WHERE titre='$produit'");
-    $select ->execute();
-    $s = $select->fetch(PDO::FETCH_OBJ);
-    ?>
-    <div class="page" id='page'>
-        <div class="articles">
-            <div class="contenu1">
-                <img src="../images_produits/<?= $s->titre; ?>.png" >
-            </div>
-            <div class="contenu2">
-                
-            </div>
-            <div class="contenu3">
-                <p class='titre'><?= $s->titre; ?></p>
-
-                <div class="stock">
-                    <p class= 'prix'>Prix :  <?= $s->prix; ?> frcs CFA</p>
-                    <p class='stockage'>Stock : <a><?= $s->stock; ?></a> </p>
-                </div>
-
-                <div class="description">
-                    <p> Description du produit : <?= $s->description; ?></p>
-                    <!-- controller la longueur des textes avec des points etc -->
-                    <?php $longueur=100;
-                    $description = $s->description; 
-                    $new_description = substr($description,0,$longueur).' ...';
-                    // $desc_finale = wordwrap($new_description,15, '<br />', true);
-                    ?>
-                    <p><?= $new_description; ?></p>
-                </div>
-
-                <div class="pourpanier">
-                <?php if ($s ->stock!=0){?><a href="#">Ajouter au panier</a> <?php }else{ ?><a> ----Stock épuisé  !----- </a> <?php } ?>
-                </div>
-
-                <div class="categorie">
-                    <p>Categorie : <?= $s->categorie; ?></p>
-                </div>
-
-                </div>
-            </div>
-        </div>
-        <div class="details">
-                <h2>Details du produit</h2>
-                <p> Description du produit : <?= $s->description; ?></p>
-                <p>Categorie : <?= $s->categorie; ?></p>
-                <p> Description du produit : <?= $s->description; ?></p>
-                <p>Categorie : <?= $s->categorie; ?></p>
-        </div>
-        <div class="facade">
-            <div class="trait"></div>
-            <div class="middle">
-                <p>Produits simulaires</p>
-            </div>
-            <div class="trait"></div>
-        </div>
-    </div>
-    <?php
+    $_SESSION['produit'] = htmlspecialchars($_GET['show']);
+    header('Location: produits.php');
 }
+// -------------------------------------------------------------
 elseif(isset($_GET['page'])){
     require_once('corps1.php');
+    ?>
+    <div class="categories">
+    <nav>
+        <ul class="bus">
+            <li><a href="">Categories</a>
+                <ul class="barre">
+                    <?php
+                        $menu = $db ->prepare("SELECT nom_categorie FROM categories");
+                        $menu ->execute();
+                        while($m = $menu->fetch(PDO::FETCH_OBJ)){
+                    ?>
+                    <li><a href="?categorie=<?= $m->nom_categorie ?>"><?= $m->nom_categorie ?></a></li>
+                    <?php
+                        }
+                    ?>
+                </ul>
+            </li>
+        </ul>
+        
+    </nav>
+    </div>
+<?php
     $page = htmlspecialchars($_GET['page']);
     ?>
 
@@ -90,7 +56,7 @@ elseif(isset($_GET['page'])){
         <?php
         $for_page = 12;
         $debut = $page*$for_page - $for_page;
-        $fin = $page*$for_page;
+        $fin = $for_page;
         $decompte = $db->prepare('SELECT count(id) FROM produits');
         $decompte->execute();
         $nombre_produits = $decompte->fetchColumn();
@@ -148,9 +114,182 @@ elseif(isset($_GET['page'])){
     </div>
     <?php     
 }
+// -----------------------------------------------------------------
+elseif(isset($_GET['categorie'])){ 
+    require_once('corps1.php');   
+    ?>
+    <div class="categories">
+        <nav>
+            <ul class="bus">
+                <li><a href="">Categories</a>
+                    <ul class="barre">
+                        <?php
+                            $menu = $db ->prepare("SELECT nom_categorie FROM categories");
+                            $menu ->execute();
+                            while($m = $menu->fetch(PDO::FETCH_OBJ)){
+                        ?>
+                        <li><a href="?categorie=<?= $m->nom_categorie ?>"><?= $m->nom_categorie ?></a></li>
+                        <?php
+                            }
+                        ?>
+                    </ul>
+                </li>
+            </ul>
+            
+        </nav>
+    </div>
+    <?php
+    if(isset($_GET['page_categorie'])){
+        $page_c = htmlspecialchars($_GET['page_categorie']);
+    ?>
+    <div class="grand_conteneur">
+            <?php
+            $for_page = 12;
+            $debut = $page_c * $for_page - $for_page;
+            $fin = $for_page;
+            $categorie = htmlspecialchars($_GET['categorie']);
+            $select = $db ->prepare("SELECT count(id) FROM produits WHERE categorie= :categorie");
+            $select->execute([
+                "categorie"=>$categorie
+            ]);
+            $nombre_produits = $select->fetchColumn();
+            $nombre_pages = $nombre_produits / $for_page;
+            $affiche = $db ->prepare("SELECT * FROM produits WHERE categorie= :categorie ORDER BY id DESC LIMIT :fin OFFSET :debut");
+            $affiche->bindValue('fin', $fin, PDO::PARAM_INT);
+            $affiche->bindValue('debut', $debut, PDO::PARAM_INT);
+            $affiche->bindValue('categorie', $categorie);
+            $affiche->execute();
+            while($a=$affiche->fetch(PDO::FETCH_OBJ)){
+            ?>
+            <div class="container">
+                    <a href="?show=<?= $a->titre; ?>">
+                    <div class="card">
+                        <div class="image">
+                            <img src="../images_produits/<?= $a->titre; ?>.png">
+                        </div>
+                        <div class="contenu">
+                            <h2><?= $a->titre; ?></h2>
+                            <div class="taille">
+                                <h3>Size : </h3>
+                                <span><?= $a->n1; ?></span>
+                                <span><?= $a->n2; ?></span>
+                                <span><?= $a->n3; ?></span>
+                                <span><?= $a->n4; ?></span>
+                            </div>
+                            <div class="couleur">
+                                <h3>couleur : </h3>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+            </div></a>
+            <?php
+            }
+            $affiche -> closeCursor();
+        ?>
+    </div>
+    <?php
+    }
+    else {
+        ?>
+    <div class="grand_conteneur">
+            <?php
+            $for_page = 12;
+            $debut = $for_page - $for_page;
+            $fin = $for_page;
+            $categorie = htmlspecialchars($_GET['categorie']);
+            $select = $db ->prepare("SELECT count(id) FROM produits WHERE categorie= :categorie");
+            $select->execute([
+                "categorie"=>$categorie
+            ]);
+            $nombre_produits = $select->fetchColumn();
+            $nombre_pages = $nombre_produits / $for_page;
+            $affiche = $db ->prepare("SELECT * FROM produits WHERE categorie= :categorie ORDER BY id DESC LIMIT :fin OFFSET :debut");
+            $affiche->bindValue('fin', $fin, PDO::PARAM_INT);
+            $affiche->bindValue('debut', $debut, PDO::PARAM_INT);
+            $affiche->bindValue('categorie', $categorie);
+            $affiche->execute();
+            while($a=$affiche->fetch(PDO::FETCH_OBJ)){
+            ?>
+            <div class="container">
+                    <a href="?show=<?= $a->titre; ?>">
+                    <div class="card">
+                        <div class="image">
+                            <img src="../images_produits/<?= $a->titre; ?>.png">
+                        </div>
+                        <div class="contenu">
+                            <h2><?= $a->titre; ?></h2>
+                            <div class="taille">
+                                <h3>Size : </h3>
+                                <span><?= $a->n1; ?></span>
+                                <span><?= $a->n2; ?></span>
+                                <span><?= $a->n3; ?></span>
+                                <span><?= $a->n4; ?></span>
+                            </div>
+                            <div class="couleur">
+                                <h3>couleur : </h3>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+            </div></a>
+            <?php
+            }
+            $affiche -> closeCursor();
+        ?>
+    </div>
+        <?php  
+    }
+    ?>
+            <div class="pagination">
+            <?php
+                if($nombre_pages<=1){
+                    ?>
+                    <a href="?page_categorie=1">1</a>
+                    <?php
+                }else{
+                    for ($i=1; $i < abs($nombre_pages)+1; $i++) { 
+                        ?>
+                        <a href="?page_categorie=<?= $i ?>"><?= $i ?></a>
+                        <?php
+                    }
+                }
+                    
+            ?> 
+            </div>
+            <?php
+}
 else{
+// ----------------------------------------------------------
     require_once('corps1.php');
 ?>
+
+<div class="categories">
+    <nav>
+        <ul class="bus">
+            <li><a href="">Categories</a>
+                <ul class="barre">
+                    <?php
+                        $menu = $db ->prepare("SELECT nom_categorie FROM categories");
+                        $menu ->execute();
+                        while($m = $menu->fetch(PDO::FETCH_OBJ)){
+                    ?>
+                    <li><a href="?categorie=<?= $m->nom_categorie ?>"><?= $m->nom_categorie ?></a></li>
+                    <?php
+                        }
+                    ?>
+                </ul>
+            </li>
+        </ul>
+        
+    </nav>
+</div>
 
 <div class="grand_conteneur">
     <?php

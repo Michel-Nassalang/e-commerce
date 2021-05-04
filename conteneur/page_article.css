@@ -110,6 +110,20 @@
     color: gray;
     transition: ease-in-out 1s;
 }
+.articles .contenu3 .contre{
+    margin-top: 15px;
+}
+.articles .contenu3 .contre p{
+    color: red;
+    font-size: 1.25rem;
+}
+.articles .contenu3 .reussi{
+    margin-top: 15px;
+}
+.articles .contenu3 .reussi p{
+    color: rgb(14, 146, 223);
+    font-size: 1.25rem;
+}
 .articles .contenu3 .categorie{
 margin-top: 15px;
 }

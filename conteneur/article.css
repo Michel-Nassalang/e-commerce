@@ -202,6 +202,37 @@
     margin-bottom: 2px;
 }
 /* ------------------------------------------ */
+.categories{
+    margin-top: 3vh;
+    margin-left: 5vw;
+    margin-right: 3vw;
+    background: linear-gradient(to right, rgba(14, 146, 223, 0.753), rgba(23, 24, 24, 0.76));
+    border-radius: 3px;
+}
+.categories nav{
+    display: block;
+}
+.categories nav ul{
+    border: none;
+}
+.categories nav ul li{
+    border: none;
+    background: transparent;
+}
+.categories nav ul li a{
+    color: #000000;
+    border: none;
+    font-size: 1.25em;
+}
+.categories .bus li .barre{
+    display: none;
+}
+.categories .bus li:hover .barre{
+    display: grid;
+    font-size: 0.7rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+/* ------------------------------------------ */
 .pagination{
     position: relative;
     margin-top: 2vh;
@@ -210,13 +241,14 @@
     text-align: center;
 }
 .pagination a{
-    width: fit-content;
+    width: min-content;
     margin-inline: 0.25vw;
     padding: .5vh 1vw;
     background-color: rgb(14, 146, 223);
     cursor: pointer;
-    border-radius: 10%;
+    border-radius: 5%;
     text-decoration: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 

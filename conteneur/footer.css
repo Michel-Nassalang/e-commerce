@@ -1,5 +1,7 @@
 footer{
+    margin-inline: 0;
     margin-top: 60px;
+    padding-inline: 0;
     align-items: center;
     position: static;
     bottom: 0;
@@ -135,11 +137,11 @@ footer{
     color: white;
     font-size: 16px;
     font-family: 'Nunito';
+    text-decoration: none;
 }
 .bottomfooter a:hover{
     color: white;
     font-size: 16px;
-    text-decoration: none;
 }
 .submit_footer{
     margin-top: 25px;

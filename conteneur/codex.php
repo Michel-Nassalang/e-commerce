@@ -5,5 +5,4 @@ require_once('corps1.php');
 require_once('footer.php');
 ?> 
 <link rel="icon" href="medias/favicon.ico">
-<link rel="stylesheet" href="site.css">
 <title>Chic-Frip</title>

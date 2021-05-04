@@ -18,66 +18,8 @@
 <link rel="stylesheet" href="page_article.css">
 <?php
 if(isset($_GET['show'])){
-    $produit = htmlspecialchars($_GET['show']);
-
-    $select = $db ->prepare("SELECT * FROM produits WHERE titre='$produit'");
-    $select ->execute();
-    $s = $select->fetch(PDO::FETCH_OBJ);
-    ?>
-    <div class="page" id='page'>
-        <div class="articles">
-            <div class="contenu1">
-                <img src="../images_produits/<?= $s->titre; ?>.png" >
-            </div>
-            <div class="contenu2">
-                
-            </div>
-            <div class="contenu3">
-                <p class='titre'><?= $s->titre; ?></p>
-
-                <div class="stock">
-                    <p class= 'prix'>Prix :  <?= $s->prix; ?> frcs CFA</p>
-                    <p class='stockage'>Stock : <a><?= $s->stock; ?></a> </p>
-                </div>
-
-                <div class="description">
-                    <p> Description du produit : <?= $s->description; ?></p>
-                    <!-- controller la longueur des textes avec des points etc -->
-                    <?php $longueur=100;
-                    $description = $s->description; 
-                    $new_description = substr($description,0,$longueur).' ...';
-                    // $desc_finale = wordwrap($new_description,15, '<br />', true);
-                    ?>
-                    <p><?= $new_description; ?></p>
-                </div>
-
-                <div class="pourpanier">
-                <?php if ($s ->stock!=0){?><a href="#">Ajouter au panier</a> <?php }else{ ?><a> ----Stock épuisé  !----- </a> <?php } ?>
-                </div>
-
-                <div class="categorie">
-                    <p>Categorie : <?= $s->categorie; ?></p>
-                </div>
-
-                </div>
-            </div>
-        </div>
-        <div class="details">
-                <h2>Details du produit</h2>
-                <p> Description du produit : <?= $s->description; ?></p>
-                <p>Categorie : <?= $s->categorie; ?></p>
-                <p> Description du produit : <?= $s->description; ?></p>
-                <p>Categorie : <?= $s->categorie; ?></p>
-        </div>
-        <div class="facade">
-            <div class="trait"></div>
-            <div class="middle">
-                <p>Produits simulaires</p>
-            </div>
-            <div class="trait"></div>
-        </div>
-    </div>
-<?php
+    $_SESSION['produit'] = htmlspecialchars($_GET['show']);
+    header('Location: produits.php');
 }else{
 ?>
 <div class="cadre">
