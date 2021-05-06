@@ -8,3 +8,64 @@
     color: rgb(27, 140, 206);
     font-family: 'Forte';
 }
+.panier{
+    max-width: 70vw;
+    margin-inline: 15vw;
+    margin-top: 5vh;
+}
+.panier .tete nav{
+    background: rgb(27, 140, 206);
+    height: 6vh;
+    padding-top: 2vh;
+    display: grid;
+    grid-template-columns: 25% 25% 20% 10% 20%;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+.panier .tete nav .p{
+    color: black;
+    font-family: cursive;
+    font-size: 1.25vw;
+    text-align: center;
+    justify-content: center;
+    font-weight: bold;
+}
+.panier .produits{
+    max-width: 70vw;
+    display: grid;
+    grid-template-rows: auto;
+}
+.panier .produits nav{
+    display: grid;
+    grid-template-columns: 25% 25% 20% 10% 20%;
+    text-align: center;
+    justify-content: center;
+    margin-top: 0;
+}
+.panier .produits nav .one img{
+    position: relative;
+    max-width: 60%;
+    z-index: -5;
+}
+.panier .produits nav .p{
+    text-align-last: center;
+    font-family: cursive;
+    border-right: 1px solid rgb(56, 56, 56);
+    border-bottom: 1px solid rgb(56, 56, 56);
+}
+.panier .produits nav .one{ 
+    border-left: 1px solid rgb(56, 56, 56);
+}
+.produits .commande{
+    position: relative;
+    margin-left: auto;
+    margin-right: 1.5vw;
+    text-decoration: none;
+    color: black;
+    font-family: cursive;
+    margin-top: 3vh;
+    padding: 0.5vw;
+    background: rgb(27, 140, 206);
+    width: fit-content;
+    border-radius: 0.5vw;
+}
