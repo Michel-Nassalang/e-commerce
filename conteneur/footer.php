@@ -1,8 +1,5 @@
-<!-- <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet"> -->
     <footer>
         <div class="congrid">
-
-            
             <div class='copyright'>
                 <div class="presta">
                 <h2>Flexzone</h2>

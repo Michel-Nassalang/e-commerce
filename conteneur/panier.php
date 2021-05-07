@@ -49,7 +49,7 @@ if(isset($_SESSION['pseudo'])){
                         <div class="p four"><?= $ligne->quantite ?></div>
                         <div class="p five">
                             <?= $ligne->quantite*$pro->prix ?> frcs <br> 
-                            <a href=""><img src="" alt=""> supprimer</a>
+                            <a href="?produit_supprimé"><img src="" alt=""> supprimer</a>
                         </div>
                     </nav>
                     <?php
@@ -67,7 +67,11 @@ if(isset($_SESSION['pseudo'])){
 }
 ?> 
 </div>
-
+<?php
+if(isset($_GET['produit_supprimé']))){
+    
+}
+?>
 <?php 
 require_once('footer.php');
 ?> 

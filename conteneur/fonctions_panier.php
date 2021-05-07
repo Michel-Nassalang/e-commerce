@@ -66,4 +66,9 @@
             }
         }
     }
+    class SUPPRIMER{
+        function supprimer($produits){
+            
+        }
+    }
 ?>
